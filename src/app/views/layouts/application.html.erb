@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to('Locate&Go',posts_path, :class => "navbar-brand" ) %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>Compte connecté : <%= current_user.email %></li>
+            <li><%= link_to('Logout',destroy_user_session_path,method: :delete) %></li>
+          <% else %>
+            <li><%= link_to("Se connecter", new_user_session_path) %></li>
+            <li><%= link_to("S'inscrire", new_user_registration_path) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <p class="notice"> <%= notice%> </p> 
+      <p class="alert"> <%= alert%> </p>
+      <%= yield %>
+    </div>
+  </body>
+</html>
