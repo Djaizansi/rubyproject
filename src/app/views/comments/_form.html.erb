@@ -13,20 +13,20 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :class => 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :message %>
-    <%= form.text_area :message %>
+    <%= form.text_area :message, :class => 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :post_id %>
-    <%= form.collection_select :post_id, @posts, :id, :title %>
+    <%= form.collection_select :post_id, @posts, :id, :title, :class => 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div>
+    <%= form.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

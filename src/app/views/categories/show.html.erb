@@ -1,14 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="card">
+    <div class="card-header">
+        <h1>Show Category : <%= @category.id %></h1>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <p>
+              <strong>Name:</strong>
+              <%= @category.name %>
+            </p>
 
-<p>
-  <strong>Color:</strong>
-  <%= @category.color %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+            <p>
+              <strong>Color:</strong>
+              <%= @category.color %>
+            </p>
+        </div>
+        <hr>
+        <%= link_to 'Edit', edit_category_path(@category) %> |
+        <%= link_to 'Back', categories_path %>
+    </div>
+</div>
