@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  #before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :category_list, only: [:new, :edit]
-
   before_action :authenticate_user!, except: [:new, :create]
+  
+  load_and_authorize_resource
 
   # GET /posts
   def index
-  @posts = Post.all
+    @posts = Post.all
   end
 
   # GET /posts/1
@@ -52,9 +53,9 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-      @post = Post.find(params[:id])
-  end
+  #def set_post
+      #@post = Post.find(params[:id])
+  #end
 
   def post_params
     params.require(:post).permit(:title, :content, :status, category_ids: [])
