@@ -16,7 +16,6 @@
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-      
           <ul class="navbar-nav text-right">
             <% if user_signed_in? %>
               <li class="nav-item dropdown">
@@ -48,6 +47,17 @@
                   <%= link_to('Créer un commentaire',new_comment_path, :class => "dropdown-item") %>
                 </div>
               </li>
+              <% if current_user.has_role? :admin  %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Roles
+                  </a>
+                  <div class="dropdown-menu">
+                    <%= link_to('Afficher les roles',roles_path, :class => "dropdown-item") %>
+                    <%= link_to('Créer un role',new_role_path, :class => "dropdown-item") %>
+                  </div>
+                </li>
+              <% end %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   <%= current_user.username %>
@@ -75,10 +85,9 @@
 
       <% if !notice.nil? %>
       <div class="alert alert-success">
-        <p class="notice"> <%= notice%> </p> 
+        <p class="notice"> <%= notice %> </p> 
       </div>
       <% end  %>
-
       <%= yield %>
     </div>
   </body>
