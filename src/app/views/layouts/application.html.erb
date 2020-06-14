@@ -21,21 +21,29 @@
       
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
+
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Post</a>
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Posts
+          </a>
           <div class="dropdown-menu">
             <%= link_to('Afficher tous les posts',posts_path, :class => "dropdown-item") %>
             <%= link_to('Créer un post',new_post_path, :class => "dropdown-item") %>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Catégories</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Catégories
+          </a>
           <div class="dropdown-menu">
-                  <%= link_to('Afficher tous les commentaires',comments_path, :class => "dropdown-item") %>
-                  <%= link_to('Créer un commentaire',new_comment_path, :class => "dropdown-item") %>
+            <%= link_to('Afficher toutes les categories',categories_path, :class => "dropdown-item") %>
+            <%= link_to('Créer une categorie',new_category_path, :class => "dropdown-item") %>
           </div>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Commentaire
@@ -45,7 +53,9 @@
             <%= link_to('Créer un commentaire',new_comment_path, :class => "dropdown-item") %>
           </div>
         </li>
+
         <% if current_user.has_role? :admin  %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Roles
@@ -55,7 +65,9 @@
             <%= link_to('Créer un role',new_role_path, :class => "dropdown-item") %>
           </div>
         </li>
+
         <% end %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.username %>
@@ -66,10 +78,14 @@
             <%= link_to('Déconnexion',destroy_user_session_path,method: :delete, :class => "dropdown-item text-danger") %>
           </div>
         </li>
+
         <% else %>
+
         <li class="nav-item"><%= link_to("Se connecter", new_user_session_path, :class => "nav-link") %></li>
         <li class="nav-item"><%= link_to("S'inscrire", new_user_registration_path, :class => "nav-link") %></li>
+
         <% end %>
+
       </ul>
     </div>
   </nav>
