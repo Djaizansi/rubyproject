@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header">
+        <h1>Editing user</h1>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <%= render 'form', user: @user %>
+        </div>
+        <%= link_to 'Show', @user %> |
+        <%= link_to 'Back', users_path %>
+    </div>
+</div>
