@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  has_and_belongs_to_many :roles, :join_table => :users_roles
+
   def assign_default_role
     self.add_role(:user) if self.roles.blank?
   end
