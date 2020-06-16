@@ -1,0 +1,30 @@
+<%= form_with(model: user, local: true) do |form| %>
+
+  <% if user.errors.any? %>
+  <div>
+    <h2><%= pluralize(user.errors.count, "error") %></h2>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <% @idRole = @user.roles.ids %>
+    <% @idRole.each do |id|  %>
+      <% @unId = id %>
+    <% end %>
+    <div>
+      <%= form.label :role %>
+      <%= form.collection_select(:role, @roles, :id, :name) %>
+      
+    </div>
+
+    <br>
+
+    <div>
+      <%= form.submit :class => 'btn btn-primary'%>
+    </div>
+    <br>
+
+<% end %>
