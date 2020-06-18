@@ -21,7 +21,6 @@
       
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-
       <% if user_signed_in? %>
 
       <li class="nav-item dropdown">
@@ -56,15 +55,17 @@
 
         <% if current_user.has_role? :admin  %>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Roles
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to('Afficher les roles',roles_path, :class => "dropdown-item") %>
-            <%= link_to('Créer un role',new_role_path, :class => "dropdown-item") %>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Gestion utilisateur
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to('Afficher les users',users_path, :class => "dropdown-item") %>
+              <div class="dropdown-divider"></div>
+              <%= link_to('Afficher les roles',roles_path, :class => "dropdown-item") %>
+              <%= link_to('Créer un role',new_role_path, :class => "dropdown-item") %>
+            </div>
+          </li>
 
         <% end %>
 
