@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 # GET /users.json
     def index
         @users = User.all
-        @roles = Role.all
     end
 
 # GET /users/1
@@ -29,7 +28,8 @@ class UsersController < ApplicationController
 # POST /users.json
     def create
         @user = User.new(user_params)
-
+        puts user_params
+        puts @user.add_roles(user_params)
         respond_to do |format|
             if @user.save
                 format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     private
     # Only allow a list of trusted parameters through.
     def user_params
-        params.require(:user).permit(:role_id)
+        params.require(:user).permit(:role_ids)
     end
 
 
