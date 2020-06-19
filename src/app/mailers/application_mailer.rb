@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'service.carsery@outlook.com'
+  default from: 'locate.and.go@gmail.com'
   layout 'mailer'
 end
