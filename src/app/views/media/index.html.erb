@@ -37,6 +37,45 @@
   </a>
 </div>
 
+<br><br>
+
+<p class="lead">Nos films et séries</p>
+
+<% @media.each do |medium| %>
+
+<div class="movie-card">
+    <div class="movie-header img-media">
+	    <div class="header-icon-container">
+		    <a href="#">
+			    <%= image_tag "media/superman.jpg", :class => "img-content" %>
+		    </a>
+	    </div>
+    </div><!--movie-header-->
+    <div class="movie-content">
+	    <div class="movie-content-header">
+		    <a href="#">
+			    <h3 class="movie-title"><%= medium.title %></h3>
+		    </a>
+		    <div class="imax-logo"></div>
+	    </div>
+	    <div class="movie-info">
+		    <div class="info-section">
+			    <label>Durée</label>
+			    <span>1h30</span>
+		    </div>
+		    <div class="info-section">
+			    <label>Ajouté par</label>
+			    <span><%= medium.add_by %></span>
+		    </div>
+		    <div class="info-section">
+			    <label>Qualité</label>
+			    <span>HD</span>
+		    </div>
+	    </div>
+    </div>
+</div>
+
+<% end %>
 <script>
 $(document).ready(function(){
    $(".carousel").carousel({
