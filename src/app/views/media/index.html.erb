@@ -1,0 +1,46 @@
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "ff8.jpg", :class => "d-block w-100" %>
+      <div class="carousel-caption d-none d-md-block" style="background: #000;">
+        <h5>Fast & Furious 8</h5>
+        <p>Maintenant disponible sur Locate & Go.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "plt.jpg", :class => "d-block w-100" %>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>La plateforme</h5>
+        <p>Maintenant disponible sur Locate & Go.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "sc6.jpg", :class => "d-block w-100" %>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Scary Movie 6</h5>
+        <p>Maintenant disponible sur Locate & Go.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<script>
+$(document).ready(function(){
+   $(".carousel").carousel({
+      interval: 10000
+   });
+});
+</script>
