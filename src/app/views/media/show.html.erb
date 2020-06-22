@@ -21,14 +21,22 @@
                         <%= @media.content %>
                         <br><br>
                         <ul class="about-list">
-                            <li>Ajouter par : <%= @media.user_id %></li>
+                            <li>Ajouter par : <%= @media.user.username %></li>
                             <li>Durée : <%= @media.duration %></li>
                             <li>Qualité : <%= @media.quality %></li>
                         </ul>
                         <br><br>
+                        <% if current_user.has_role? :admin %>
+
+                        <p>Cliquer <%= link_to("ici", {action: 'index', controller: 'media'}, {class: 'responsive'}) %> pour supprimer ou modifier le film</p>
+
+                        <% else %>
+
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-success">Louer <%= @media.title %></button>
                         </div>
+
+                        <% end %>
                     </div>
                 </div>
             </div>
