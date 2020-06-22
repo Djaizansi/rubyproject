@@ -1,0 +1,59 @@
+<%= form_with(model: media, local: true) do |form| %>
+
+<% if media.errors.any? %>
+
+<div>
+  <h2>There is <%= pluralize(media.errors.count, "error") %></h2>
+  <ul>
+    <% media.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+<div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, autofocus: true, autocomplete: "Titre du film/série", :class => 'form-control' %>
+</div>
+
+<div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+</div>
+
+<div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, autocomplete: "Description", :class => 'form-control' %>
+</div>
+
+<div class="field">
+    <%= form.label :quality %>
+    <%= form.select :quality, [ 
+        ['HD 1080p', 'HD 1080p'],
+        ['HD 1080i', 'HD 1080i'],
+        ['ED 480p', 'ED 480p'],
+        ['SD 576i', 'SD 576i'],
+        ['SD 480i', 'SD 480i'],
+        ], selected: media.quality ? media.quality : false
+        %>
+</div>
+
+<div class="field">
+    <%= form.label :duration %>
+    <%= form.select :duration, [ 
+        ["- d'une heure", "- d'une heure"],
+        ["1h - 2h", "1h - 2h"],
+        ["2h - 3h", "2h - 3h"],
+        ], selected: media.duration ? media.duration : false
+        %>
+</div>
+
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+
+<div>
+    <%= form.submit %>
+</div>
+
+<% end %>
