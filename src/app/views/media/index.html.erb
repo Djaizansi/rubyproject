@@ -1,6 +1,6 @@
 <% if current_user.has_role? :admin  %>
 
-<h1>Listes de films disponible sur le sites</h1>
+<h1>Liste de films disponible sur le sites</h1>
 
 <br><br>
 
@@ -17,8 +17,8 @@
         <% @media.each do |m| %>
             <tr>
                 <td><%= m.title %></td>
-                <td><%= m.user_id %></td>
-                <td><%= m.created_at %></td>
+                <td><%= m.user.username %></td>
+                <td><%= m.created_at.strftime("Le %d/%m/%Y à %H:%M  ") %></td>
                 <td>
                     <%= link_to("Show", m) %>
                     <%= link_to("Edit", edit_medium_path(m)) %>
@@ -101,7 +101,7 @@
 		    </div>
 		    <div class="info-section">
 			    <label>Ajouté par</label>
-			    <span><%= medium.user_id %></span>
+			    <span><%= medium.user.username %></span>
 		    </div>
 		    <div class="info-section">
 			    <label>Qualité</label>
