@@ -46,14 +46,17 @@
 <div class="movie-card">
     <div class="movie-header img-media">
 	    <div class="header-icon-container">
-		    <a href="#">
-			    <%= image_tag "media/superman.jpg", :class => "img-content" %>
-		    </a>
+      <%= link_to medium do %>
+        <% if medium.image.attached? %>
+			    <%= image_tag medium.image %>
+          <% else %>
+          <%= image_tag "media/default.jpg" %>
+        <% end %>
+      <% end %>
 	    </div>
     </div><!--movie-header-->
     <div class="movie-content">
 	    <div class="movie-content-header">
-		    <a href="#">
 			    <h3 class="movie-title"><%= medium.title %></h3>
 		    </a>
 		    <div class="imax-logo"></div>
@@ -61,16 +64,25 @@
 	    <div class="movie-info">
 		    <div class="info-section">
 			    <label>Durée</label>
-			    <span>1h30</span>
+			    <span><%= medium.duration %></span>
 		    </div>
 		    <div class="info-section">
 			    <label>Ajouté par</label>
-			    <span><%= medium.add_by %></span>
+			    <span><%= medium.user_id %></span>
 		    </div>
 		    <div class="info-section">
 			    <label>Qualité</label>
-			    <span>HD</span>
+			    <span><%= medium.quality %></span>
 		    </div>
+        <% if current_user.has_role? :admin  %>
+            <% if current_user = medium.user_id %>
+              <div class="info-section">
+                <label>Actions</label>
+			          <span><%= link_to("Destroy", medium, method: :delete, data: { confirm: "Supprimer ?" }) %></span>
+                <span>Edit</span>
+		          </div>
+            <% end %>
+        <% end %>
 	    </div>
     </div>
 </div>
