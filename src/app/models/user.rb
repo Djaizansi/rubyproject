@@ -14,4 +14,6 @@ class User < ApplicationRecord
     self.add_role(:user) if self.roles.blank?
   end
 
+  has_many :media
+
 end
