@@ -1,3 +1,36 @@
+<% if current_user.has_role? :admin  %>
+
+<h1>Listes de films disponible sur le sites</h1>
+
+<br><br>
+
+    <table class="table text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Ajouté par</th>
+                <th scope="col">Date d'ajout</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @media.each do |m| %>
+            <tr>
+                <td><%= m.title %></td>
+                <td><%= m.user_id %></td>
+                <td><%= m.created_at %></td>
+                <td>
+                    <%= link_to("Show", m) %>
+                    <%= link_to("Edit", edit_medium_path(m)) %>
+                    <%= link_to("Destroy", m, method: :delete, data: { confirm: "Supprimer ?" }) %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+<% else %>
+
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -79,7 +112,7 @@
               <div class="info-section">
                 <label>Actions</label>
 			          <span><%= link_to("Destroy", medium, method: :delete, data: { confirm: "Supprimer ?" }) %></span>
-                <span>Edit</span>
+                <span><%= link_to("Edit", edit_medium_path(medium)) %></span>
 		          </div>
             <% end %>
         <% end %>
@@ -88,6 +121,7 @@
 </div>
 
 <% end %>
+
 <script>
 $(document).ready(function(){
    $(".carousel").carousel({
@@ -95,3 +129,5 @@ $(document).ready(function(){
    });
 });
 </script>
+
+<% end %>
