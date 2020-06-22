@@ -1,0 +1,39 @@
+<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2><%= @media.title %></h2>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="img-content">
+                    <% if @media.image.attached? %>
+                        <%= image_tag @media.image, style: 'height:500px;width:350px;'%>
+                    <% else %>
+                        <%= image_tag "media/default.jpg" %>
+                    <% end %>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="about-details wow animated fadeInLeft" data-wow-duration="1s" data-wow-delay="0s">
+                        <h3 class="about-title">Synopsis</h3>
+                        <%= @media.content %>
+                        <br><br>
+                        <ul class="about-list">
+                            <li>Ajouter par : <%= @media.user_id %></li>
+                            <li>Durée : <%= @media.duration %></li>
+                            <li>Qualité : <%= @media.quality %></li>
+                        </ul>
+                        <br><br>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-success">Louer <%= @media.title %></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <br><br>
+
+            <%= link_to 'Retourner à la liste des films', media_path, :class => "btn btn-secondary btn-lg btn-block", :style => "color: #fff;" %>
+        </div>
