@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_120147) do
+ActiveRecord::Schema.define(version: 2020_06_22_212909) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 2020_06_22_120147) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "until"
+    t.bigint "user_id"
+    t.bigint "medium_id"
+    t.bigint "user_id_from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at"
+    t.index ["medium_id"], name: "fk_rails_8427ad448e"
+    t.index ["user_id"], name: "fk_rails_5e107925c6"
   end
 
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -116,5 +127,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_120147) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
+  add_foreign_key "locations", "media"
+  add_foreign_key "locations", "users"
   add_foreign_key "media", "users"
 end
