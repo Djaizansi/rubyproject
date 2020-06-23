@@ -16,7 +16,7 @@ class MediaController < ApplicationController
     def create
         @media = Medium.new(media_params)
         if @media.save
-            redirect_to @media, notice: "Votre film a bien été ajouté à la vidéothèque !"
+            redirect_to @media, notice: "Votre film a bien été ajouté chez Locate & GO !"
         else
             render :new
         end
