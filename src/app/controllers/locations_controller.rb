@@ -41,7 +41,7 @@ class LocationsController < ApplicationController
 
     private
     def locations_params
-        params.require(:location).permit(:until, :user_id, :medium_id, :user_id_from)
+        params.require(:location).permit(:until, :user_id, :medium_id)
     end
     def set_locations
         @locations = Location.find(params[:id])
