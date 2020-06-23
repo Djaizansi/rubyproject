@@ -33,7 +33,7 @@
                         <% else %>
 
                         <div class="d-flex justify-content-center">
-                            <%= link_to new_location_path(:id => @media.user_id) do %>
+                            <%= link_to new_location_path(:id => @media.id) do %>
                             <button type="button" class="btn btn-primary btn-lg btn-block">Louer <%= @media.title %></button>
                             <% end %>
                         </div>
