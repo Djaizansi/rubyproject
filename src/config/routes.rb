@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :posts # localhost:3000/posts
 
   resources :media
+  resources :locations
 
   default_url_options :host => "localhost:3000"
 
