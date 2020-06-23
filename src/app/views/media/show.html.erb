@@ -32,8 +32,10 @@
 
                         <% else %>
 
-                        <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-success">Louer <%= @media.title %></button>
+                        <div class="d-flex justify-content-center">
+                            <%= link_to new_location_path(:id => @media.user_id) do %>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Louer <%= @media.title %></button>
+                            <% end %>
                         </div>
 
                         <% end %>
