@@ -1,0 +1,34 @@
+<%= form_with(model: locations, local: true) do |form| %>
+
+<% if locations.errors.any? %>
+
+<div>
+  <h2>There is <%= pluralize(locations.errors.count, "error") %></h2>
+  <ul>
+    <% locations.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+<div class="field">
+    <%= form.label :until %>
+    <%= form.datetime_field :until, :class => 'form-control' %>
+</div>
+
+<%= form.hidden_field :user_id, :value => current_user.id %>
+
+<%= form.hidden_field :medium_id, :value => params[:id]%>
+
+<div class="field">
+    <%= form.label :user_id_from %>
+    <%= form.text_field :user_id_from, :class => 'form-control' %>
+</div>
+
+<div>
+    <%= form.submit %>
+</div>
+
+<% end %>

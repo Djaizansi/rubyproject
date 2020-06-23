@@ -1,0 +1,21 @@
+<div class="container">
+    <h2 class="font-weight-light font-italic">Vous regardez</h2>
+    <h1><%= @locations.medium.title %></h1>
+
+    <br>
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <%= video_tag "media/mido.mp4", :class => "embed-responsive-item", :controls => true, :allowfullscreen => true %>
+    </div>
+
+    <div class="p-3 mb-2 bg-info text-white">
+        La location de ce film prend fin le <%= @locations.until.strftime("%d/%m/%Y à %H:%M") %>. Bon visionnage !
+    </div>
+
+    <br>
+    <br>
+
+
+    <%= link_to(('Retouner à ma vidéothèque'), {action: 'index', controller: 'locations'}, {class: 'btn btn-light btn-lg btn-block'}) %>
+
+</div>

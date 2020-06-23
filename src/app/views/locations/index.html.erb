@@ -1,0 +1,31 @@
+<h1>Liste des films loués</h1>
+
+<br><br>
+
+
+    <table class="table text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Ajouté par</th>
+                <th scope="col">Début de location</th>
+                <th scope="col">Fin de la location</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @locations.each do |l| %>
+            <tr>
+                <td><%= l.medium.title%></td>
+                <td><%= l.user.username %></td>
+                <td><%= l.created_at.strftime("Le %d/%m/%Y à %H:%M")%></td>
+                <td><%= l.until.strftime("Le %d/%m/%Y à %H:%M") %></td>
+                <td>
+                    <%= link_to("Show", l) %>
+                    <%= link_to("Edit", edit_location_path(l)) %>
+                    <%= link_to("Destroy", l, method: :delete, data: { confirm: "Supprimer ?" }) %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
